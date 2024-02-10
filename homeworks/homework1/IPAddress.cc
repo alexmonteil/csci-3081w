@@ -121,90 +121,118 @@ vector<int> parseSM(int val) {
     binaryString.resize(32, '0');
     string substr;
 
-for (int i = 0; i < 4; i++) {
-    substr = binaryString.substr(8*i, 8);
-    bitset<32> binaryBits(substr);
-    values[i] = binaryBits.to_ulong();
-}
+    for (int i = 0; i < 4; i++) {
+        substr = binaryString.substr(8*i, 8);
+        bitset<32> binaryBits(substr);
+        values[i] = binaryBits.to_ulong();
+    }
     
     return values;
 }
 
 class IPAddress {
-private:
-vector<int> ipOctets;
-vector<int> smOctets;
-public:
-IPAddress(const vector<int>& ip, const vector<int>& subnetMask) : ipOctets(ip), smOctets(subnetMask) {
-if (ipOctets.size() != 4 || smOctets.size() != 4) {
-    cout << "Both IP address and subnet mask must have 4 octets.";
-}
-}
-vector<int> calculateNetworkAddress() {
-vector<int> networkAddress(4);
-for (int i = 0; i < 4; ++i) {
-    networkAddress[i] = ipOctets[i] & smOctets[i];
-}
-return networkAddress;
-}
-vector<int> calculateBroadcastAddress() {
-vector<int> broadcastAddress(4);
-for (int i = 0; i < 4; ++i) {
-    broadcastAddress[i] = ipOctets[i] | invert_num(smOctets[i]);
-}
-return broadcastAddress;
-}
-pair<vector<int>, vector<int>> calculateValidIPAddressRange() {
-vector<int> networkAddress = calculateNetworkAddress();
-vector<int> broadcastAddress = calculateBroadcastAddress();
-return make_pair(networkAddress, broadcastAddress);
-}
+    private:
+
+        vector<int> ipOctets;
+        vector<int> smOctets;
+
+    public:
+
+        IPAddress(const vector<int>& ip, const vector<int>& subnetMask) : ipOctets(ip), smOctets(subnetMask) {
+            if (ipOctets.size() != 4 || smOctets.size() != 4) {
+                cout << "Both IP address and subnet mask must have 4 octets.";
+            }
+        }
+
+        vector<int> calculateNetworkAddress() {
+
+            vector<int> networkAddress(4);
+        
+            for (int i = 0; i < 4; ++i) {
+                networkAddress[i] = ipOctets[i] & smOctets[i];
+            }
+
+            return networkAddress;
+        }
+
+        vector<int> calculateBroadcastAddress() {
+            vector<int> broadcastAddress(4);
+            for (int i = 0; i < 4; ++i) {
+                broadcastAddress[i] = ipOctets[i] | invert_num(smOctets[i]);
+            }
+
+            return broadcastAddress;
+        }
+
+        pair<vector<int>, vector<int>> calculateValidIPAddressRange() {
+
+            vector<int> networkAddress = calculateNetworkAddress();
+            vector<int> broadcastAddress = calculateBroadcastAddress();
+            return make_pair(networkAddress, broadcastAddress);
+        }
 };
 
 int main() {
+
     string ipAddressStr;
     int subnetMaskInt;
+
     cout << "Enter an IPv4 address (xxx.xxx.xxx.xxx): ";
     cin >> ipAddressStr;
+
     int valid = validity(ipAddressStr);
+
     if (valid == 0) {
         cout << "Invalid inputs" << endl;
         return 0;
     }
+
     vector<int> ipAddress = parseOctets(ipAddressStr);
+
     cout << "Enter a subnet mask [1-32]: ";
     cin >> subnetMaskInt;
+
     if ((subnetMaskInt < 1) or (subnetMaskInt > 32)) {
         cout << "Invalid subnet mask" << endl;
         return 0;
     }
+
     vector<int> subnetMask = parseSM(subnetMaskInt);
     IPAddress ip(ipAddress, subnetMask);
     vector<int> networkAddress = ip.calculateNetworkAddress();
     vector<int> broadcastAddress = ip.calculateBroadcastAddress();
     pair<vector<int>, vector<int>> validRange = ip.calculateValidIPAddressRange();
+
     cout << "Network Address: ";
+
     for (int i = 0; i < 4; ++i) {
         cout << networkAddress[i];
         if (i < 3) cout << ".";
     }
+
     cout << endl;
     cout << "Broadcast Address: ";
+
     for (int i = 0; i < 4; ++i) {
         cout << broadcastAddress[i];
         if (i < 3) cout << ".";
     }
+
     cout << endl;
     cout << "Valid IP Address Range: ";
+
     for (int i = 0; i < 4; ++i) {
         cout << validRange.first[i];
         if (i < 3) cout << ".";
     }
+
     cout << " - ";
+
     for (int i = 0; i < 4; ++i) {
         cout << validRange.second[i];
         if (i < 3) cout << ".";
     }
+    
     cout << endl;
     return 0;
 }
