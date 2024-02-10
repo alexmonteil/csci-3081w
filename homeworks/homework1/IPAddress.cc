@@ -121,44 +121,44 @@ vector<int> parseSM(int val) {
     binaryString.resize(32, '0');
     string substr;
 
-    for (int i = 0; i < 4; i++) {
-        substr = binaryString.substr(8*i, 8);
-        bitset<32> binaryBits(substr);
-        values[i] = binaryBits.to_ulong();
-	}
+for (int i = 0; i < 4; i++) {
+    substr = binaryString.substr(8*i, 8);
+    bitset<32> binaryBits(substr);
+    values[i] = binaryBits.to_ulong();
+}
     
     return values;
 }
 
 class IPAddress {
-	private:
-		vector<int> ipOctets;
-		vector<int> smOctets;
-	public:
-		IPAddress(const vector<int>& ip, const vector<int>& subnetMask) : ipOctets(ip), smOctets(subnetMask) {
-			if (ipOctets.size() != 4 || smOctets.size() != 4) {
-				cout << "Both IP address and subnet mask must have 4 octets.";
-			}
-		}
-		vector<int> calculateNetworkAddress() {
-			vector<int> networkAddress(4);
-			for (int i = 0; i < 4; ++i) {
-				networkAddress[i] = ipOctets[i] & smOctets[i];
-			}
-			return networkAddress;
-		}
-		vector<int> calculateBroadcastAddress() {
-			vector<int> broadcastAddress(4);
-			for (int i = 0; i < 4; ++i) {
-				broadcastAddress[i] = ipOctets[i] | invert_num(smOctets[i]);
-			}
-			return broadcastAddress;
-		}
-		pair<vector<int>, vector<int>> calculateValidIPAddressRange() {
-			vector<int> networkAddress = calculateNetworkAddress();
-			vector<int> broadcastAddress = calculateBroadcastAddress();
-			return make_pair(networkAddress, broadcastAddress);
-		}
+private:
+vector<int> ipOctets;
+vector<int> smOctets;
+public:
+IPAddress(const vector<int>& ip, const vector<int>& subnetMask) : ipOctets(ip), smOctets(subnetMask) {
+if (ipOctets.size() != 4 || smOctets.size() != 4) {
+    cout << "Both IP address and subnet mask must have 4 octets.";
+}
+}
+vector<int> calculateNetworkAddress() {
+vector<int> networkAddress(4);
+for (int i = 0; i < 4; ++i) {
+    networkAddress[i] = ipOctets[i] & smOctets[i];
+}
+return networkAddress;
+}
+vector<int> calculateBroadcastAddress() {
+vector<int> broadcastAddress(4);
+for (int i = 0; i < 4; ++i) {
+    broadcastAddress[i] = ipOctets[i] | invert_num(smOctets[i]);
+}
+return broadcastAddress;
+}
+pair<vector<int>, vector<int>> calculateValidIPAddressRange() {
+vector<int> networkAddress = calculateNetworkAddress();
+vector<int> broadcastAddress = calculateBroadcastAddress();
+return make_pair(networkAddress, broadcastAddress);
+}
 };
 
 int main() {
