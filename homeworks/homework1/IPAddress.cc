@@ -79,7 +79,7 @@ int validity(const string& input) {
         }
     }
     
-return valid;
+    return valid;
 }
 
 // Helper function to parse IP address from a string.
@@ -90,27 +90,27 @@ vector<int> parseOctets(const string& input) {
     int periodPosition[4];
     periodPosition[0] = -1;
 
-for (int i = 0; i < input.size(); i++) {
-    if (input[i] == '.') {
-        periodCounter++;
-        // save the period positions
-        periodPosition[periodCounter] = i;
+    for (int i = 0; i < input.size(); i++) {
+        if (input[i] == '.') {
+            periodCounter++;
+            // save the period positions
+            periodPosition[periodCounter] = i;
+        }
     }
-}
     
-for (int i = 0; i < 4; i++) {
-    // extracting the last octet
-    if (i == 3) {
+    for (int i = 0; i < 4; i++) {
+        // extracting the last octet
+        if (i == 3) {
 
-        values[i] = stoi(input.substr(periodPosition[i]+1));
+            values[i] = stoi(input.substr(periodPosition[i]+1));
 
-    } else {
+        } else {
 
-        values[i] = stoi(input.substr(periodPosition[i]+1, (periodPosition[i+1] - periodPosition[i] - 1)));
+            values[i] = stoi(input.substr(periodPosition[i]+1, (periodPosition[i+1] - periodPosition[i] - 1)));
+        }
     }
-}
 
-return values;
+    return values;
 }
 
 // Helper function to obtain subnetmask from integer value
