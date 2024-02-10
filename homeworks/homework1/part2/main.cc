@@ -76,10 +76,10 @@ void interactWithPost(const std::vector<Post*>& posts, int i) {
 */ 
 void getUsernameFromConsole(std::string &name) {
   std::cout << "Please enter your name: " << std:endl;
-  cin >> *name;
+  std::cin >> *name;
   while (*name.find_first_not_of(' ') == std::string::npos || *name.empty()) {
-    std::cout << "Please enter your name: " << std:endl;
-    cin >> *name;
+    std::cout << "Please enter your name: " << std::endl;
+    std::cin >> *name;
   }
 }
 
@@ -88,6 +88,7 @@ int main() {
 
   std::string username = "Notch";
   /** TODO: Get username using the `getUsernameFromConsole` function*/
+  getUsernameFromConsole(username);
   
 
   std::vector<Post*> database;
