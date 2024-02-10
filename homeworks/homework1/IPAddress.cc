@@ -78,6 +78,7 @@ int validity(const string& input) {
             return valid;
         }
 	}
+    
 	return valid;
 }
 
