@@ -35,7 +35,7 @@ int validity(const string& input) {
     int periodPosition[4];
     periodPosition[0] = -1;
 
-for (int i = 0; i < input.size(); i++) {
+    for (int i = 0; i < input.size(); i++) {
 
         if (input[i] == '.') {
 
@@ -47,16 +47,16 @@ for (int i = 0; i < input.size(); i++) {
             }
             // save the period positions
             periodPosition[periodCounter] = i;
-        }
-}
+        }   
+    }
 
-// To check whether the provided IP has 4 octets
-if (periodCounter < 3) {
-    valid = 0;
-    return valid;
-}
+    // To check whether the provided IP has 4 octets
+    if (periodCounter < 3) {
+        valid = 0;
+        return valid;
+    }
 
-for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         // // To check whether valid octets are provided within the period signs
         if (((periodPosition[i+1] - periodPosition[i] - 1) == 0) or (periodPosition[i]+1 == input.size())){
             valid = 0;
@@ -77,7 +77,7 @@ for (int i = 0; i < 4; i++) {
             valid = 0;
             return valid;
         }
-}
+    }
     
 	return valid;
 }
