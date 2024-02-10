@@ -7,29 +7,41 @@ using namespace std;
 
 // Helper function to calculate the complement of an integer
 int invert_num(int val) {
+
     string complementString = bitset<8>(val).to_string();
+
     for (char &ch : complementString) {
         if (ch == '0') { 
+
             ch = '1';
+
         } else if (ch == '1') {
+
             ch = '0';
+
         }
     }
+
     bitset<32> binaryBits(complementString);
     return binaryBits.to_ulong();
 }
 
 // Helper function to check the validity of inputs
 int validity(const string& input) {
+    
     int valid = 1;
     int value;
     int periodCounter = 0;
     int periodPosition[4];
     periodPosition[0] = -1;
+
 	for (int i = 0; i < input.size(); i++) {
+
         if (input[i] == '.') {
+
             periodCounter++;
             if (periodCounter > 3) {
+
                 valid = 0;
                 return valid;
             }
@@ -37,11 +49,13 @@ int validity(const string& input) {
             periodPosition[periodCounter] = i;
         }
 	}
+
 	// To check whether the provided IP has 4 octets
 	if (periodCounter < 3) {
 	    valid = 0;
 	    return valid;
 	}
+
 	for (int i = 0; i < 4; i++) {
 		// // To check whether valid octets are provided within the period signs
         if (((periodPosition[i+1] - periodPosition[i] - 1) == 0) or (periodPosition[i]+1 == input.size())){
@@ -50,9 +64,13 @@ int validity(const string& input) {
         }
 	    // extracting the last octet
         if (i == 3) {
+
             value = stoi(input.substr(periodPosition[i]+1));
+
         } else {
+
             value = stoi(input.substr(periodPosition[i]+1, (periodPosition[i+1] - periodPosition[i] - 1)));
+
         }
 		// To check whether the octets are in the range 0-255
         if ((value > 255) and (value < 0)) {
@@ -65,10 +83,12 @@ int validity(const string& input) {
 
 // Helper function to parse IP address from a string.
 vector<int> parseOctets(const string& input) {
+
     vector<int> values(4);
     int periodCounter = 0;
     int periodPosition[4];
     periodPosition[0] = -1;
+
 	for (int i = 0; i < input.size(); i++) {
         if (input[i] == '.') {
             periodCounter++;
@@ -94,15 +114,18 @@ vector<int> parseOctets(const string& input) {
 
 // Helper function to obtain subnetmask from integer value
 vector<int> parseSM(int val) {
+
     vector<int> values(4);
     string binaryString(val, '1');
     binaryString.resize(32, '0');
     string substr;
+
     for (int i = 0; i < 4; i++) {
         substr = binaryString.substr(8*i, 8);
         bitset<32> binaryBits(substr);
         values[i] = binaryBits.to_ulong();
 	}
+    
     return values;
 }
 
