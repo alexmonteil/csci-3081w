@@ -37,17 +37,17 @@ int validity(const string& input) {
 
 	for (int i = 0; i < input.size(); i++) {
 
-        if (input[i] == '.') {
+            if (input[i] == '.') {
 
-            periodCounter++;
-            if (periodCounter > 3) {
+                periodCounter++;
+                if (periodCounter > 3) {
 
-                valid = 0;
-                return valid;
+                    valid = 0;
+                    return valid;
+                }
+                // save the period positions
+                periodPosition[periodCounter] = i;
             }
-            // save the period positions
-            periodPosition[periodCounter] = i;
-        }
 	}
 
 	// To check whether the provided IP has 4 octets
@@ -57,26 +57,26 @@ int validity(const string& input) {
 	}
 
 	for (int i = 0; i < 4; i++) {
-		// // To check whether valid octets are provided within the period signs
-        if (((periodPosition[i+1] - periodPosition[i] - 1) == 0) or (periodPosition[i]+1 == input.size())){
-            valid = 0;
-            return valid;
-        }
-	    // extracting the last octet
-        if (i == 3) {
+            // // To check whether valid octets are provided within the period signs
+            if (((periodPosition[i+1] - periodPosition[i] - 1) == 0) or (periodPosition[i]+1 == input.size())){
+                valid = 0;
+                return valid;
+            }
+            // extracting the last octet
+            if (i == 3) {
 
-            value = stoi(input.substr(periodPosition[i]+1));
+                value = stoi(input.substr(periodPosition[i]+1));
 
-        } else {
+            } else {
 
-            value = stoi(input.substr(periodPosition[i]+1, (periodPosition[i+1] - periodPosition[i] - 1)));
+                value = stoi(input.substr(periodPosition[i]+1, (periodPosition[i+1] - periodPosition[i] - 1)));
 
-        }
-		// To check whether the octets are in the range 0-255
-        if ((value > 255) and (value < 0)) {
-            valid = 0;
-            return valid;
-        }
+            }
+            // To check whether the octets are in the range 0-255
+            if ((value > 255) and (value < 0)) {
+                valid = 0;
+                return valid;
+            }
 	}
     
 	return valid;
