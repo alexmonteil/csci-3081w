@@ -1,5 +1,6 @@
 #include "note.h"
 
+
 void Note::view() {
     std::cout << "================================================================================\n";
     std::cout << "Note: " << this->title << std::endl;

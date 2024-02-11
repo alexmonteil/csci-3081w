@@ -11,8 +11,13 @@
 /**
  * TODO: Why is our argument a const? What is the importance of this?
  * Response:
+ * Using const for the argument ensures the function cannot modify the content of the vector posts.
+ * This is useful for functions that are meant to only read data without altering it.
+ * 
  * TODO: What does the "&" symbol do?
  * Response:
+ * The & symbol ensures the posts vector is passed as a reference therefore avoiding an unneeded copy of the vector.
+ * This allows for higher performance / efficiency as the function will waste performance and memory copying the vector.
 */
 void previewPosts(const std::vector<Post*>& posts) {
     int counter = 0;
@@ -26,7 +31,12 @@ void previewPosts(const std::vector<Post*>& posts) {
 /**
  * TODO: Sometimes this function throws an error. Find out why and fix it
 */
-void displayPost(const std::vector<Post*>& posts,int i) {
+void displayPost(const std::vector<Post*>& posts, int i) {
+    if(i < 0 || i >= posts.size()) {
+        std::cout << "Invalid selection: " << i << std::endl;
+        return;
+    }
+
     posts.at(i)->view();
     return;
 }
@@ -34,14 +44,52 @@ void displayPost(const std::vector<Post*>& posts,int i) {
 /**
  * TODO: Give a description of what is happening in this method
  * Response:
+ * 
+ * The method checks if the index selected by the user is out of bounds for the posts vector,
+ * It then attempts a to dynamic cast the member of posts at index i into a question pointer.
+ * If the cast succeeds it displays the question and prompts the user for a response to the question
+ * It then adds the response to the Question object and returns (ending the method execution).
+ * 
+ * If the dynamic cast to a Question pointer fails, the method attempts to dynamic cast the member of posts at index i
+ * into a Poll pointer.
+ * If the cast succeeds it displays the poll and prompts the user to select a poll option.
+ * It records the user vote for the poll and returns (ending the method execution).
+ * 
+ * If none of the dynamics casts succeeded, the method displays "This post can not be interacted with" to the console.
+ * 
  * TODO: Why are we dynamically casting?
  * Response:
+ * 
+ * We are dynamically casting because the method relies on user input, the user decides which post to interact with.
+ * This means we do not know ahead of time what polymorphic type the post should be downcasted into.
+ * Dynamic casting allows to perform safe downcasting of polymorphic types and to check whether the conversion is possible at runtime.
+ * In terms of the reason for downcasting in this specific method, we receive input from the user on their choice of which post to interact with,
+ * we then try to downcast the post (pointer) they selected into either a question (pointer) or a poll (pointer) at runtime, this will decide the behavior of the program,
+ * if it is a question we will prompt the user for an answer to that question while if it is a poll we will prompt the user for a vote on the poll.
+ * if it is neither of those then the post is not a type of post that can be interacted with.
+ *  
  * TODO: What does dynamic casting do?
  * Response:
+ * 
+ * Dynamic casting allows to convert a pointer or reference to a base class type to a pointer or reference to a derived class type.
+ * This is commonly referred to as downcasting.
+ * If it succeeds it returns the pointer to the derived class type.
+ * If it fails it returns a null pointer.
+ * 
+ * 
  * TODO: How is dynamic casting different from static casting?:
  * Response:
+ * 
+ * Dynamic casting occurs at runtime while static casting occurs at compile time.
+ * Dynamic casting can only be used with pointers or references to classes with a polymorphic behavior.
+ * Static casting works with pointers, reference types, and fundamental types.
+ * Static casting is used for implicit conversions that are safe and well defined at compile time.
+ * Dynamic casting is used mainly for performing safe downcasting of polymorphic types at runtime and performing runtime type checking.
+ * 
+ * 
 */
 void interactWithPost(const std::vector<Post*>& posts, int i) {
+
     if(i < 0 || i >= posts.size()) {
       std::cout << "Invalid selection: " << i << std::endl;
       return;
