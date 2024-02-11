@@ -19,7 +19,9 @@ void Question::addResponse(std::string newResponse) {
 }
 
 void Question::view() {
+    std::cout << "================================================================================\n";
     std::cout << "Question: " << this->title << "\nBy: " << this->author << "\n" << this->text << 
-    "\nViews: " << this->views << std::endl;
+    "\nViews: " << this->views << "\n";
+    std::cout << "================================================================================\n";
     this->addView();
 }

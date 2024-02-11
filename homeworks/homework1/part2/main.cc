@@ -178,6 +178,7 @@ int main() {
         break;
           
       default:
+        std::cout << "Invalid selection: " << selection << std::endl;
         break;
     }
   }
