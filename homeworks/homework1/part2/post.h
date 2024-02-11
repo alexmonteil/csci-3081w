@@ -7,7 +7,7 @@
 class Post {
    
  protected:
- 
+
   std::string title;
   std::string text;
   std::string author;
@@ -17,11 +17,11 @@ class Post {
  public:
 
   /** Constructors */
-  Post::Post();
-  Post::Post(std::string newTitle, std::string newText, std::string newAuthor, long newCreated);
+  Post();
+  Post(std::string newTitle, std::string newText, std::string newAuthor, long newCreated);
 
   /** Destructor */
-  virtual Post::~Post();
+  virtual ~Post();
 
   /** Getters */
   std::string getTitle();

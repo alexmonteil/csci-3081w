@@ -13,11 +13,11 @@ class Question : public Post {
         std::vector<std::string> responses;
 
     public:
-        Question::Question();
-        Question::Question(std::vector<std::string> newResponses);
-        Question::~Question();
-        void Question::addResponse(std::string newResponse);
-        void Question::view();
+        Question();
+        Question(std::vector<std::string> newResponses);
+        ~Question();
+        void addResponse(std::string newResponse);
+        void view();
 };
 
-#endif
+#endif // QUESTION_H
