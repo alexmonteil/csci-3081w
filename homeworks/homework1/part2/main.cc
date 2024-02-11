@@ -126,7 +126,7 @@ void interactWithPost(const std::vector<Post*>& posts, int i) {
 void getUsernameFromConsole(std::string &name) {
   while (true) {
     std::cout << "Please enter your name: " << std::endl;
-    std::cin >> name;
+    getline(std::cin, name);
     if (name.find_first_not_of(' ') != std::string::npos && !name.empty()) {
       return;
     }
