@@ -28,6 +28,7 @@ void previewPosts(const std::vector<Post*>& posts) {
     std::cout << "================================================================================\n\n";
     return;
 }
+
 /**
  * TODO: Sometimes this function throws an error. Find out why and fix it
 */
@@ -123,18 +124,19 @@ void interactWithPost(const std::vector<Post*>& posts, int i) {
  * TODO: Make 'getUsernameFromConsole` method here
 */ 
 void getUsernameFromConsole(std::string &name) {
-  std::cout << "Please enter your name: " << std:endl;
-  std::cin >> *name;
-  while (*name.find_first_not_of(' ') == std::string::npos || *name.empty()) {
+  while (true) {
     std::cout << "Please enter your name: " << std::endl;
-    std::cin >> *name;
+    std::cin >> name;
+    if (name.find_first_not_of(' ') != std::string::npos && !name.empty()) {
+      return;
+    }
   }
 }
 
 
 int main() {
 
-  std::string username = "Notch";
+  std::string username;
   /** TODO: Get username using the `getUsernameFromConsole` function*/
   getUsernameFromConsole(username);
   
@@ -158,9 +160,11 @@ int main() {
       case 0:
         run = false;
         break;
+
       case 1:
         previewPosts(database);
         break;
+
       case 2:
         std::cout << "Enter the index of the post you would like to view.\nPost Index:";
         std::cin >> selection;
@@ -179,6 +183,10 @@ int main() {
   }
 
   std::cout << "Goodbye.\n";
+
+  for(auto post : database) {
+    delete post;
+  }
 
   return 0;
 }

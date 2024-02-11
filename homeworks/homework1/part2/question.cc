@@ -2,9 +2,10 @@
 
 /** Constructors */
 
-Question::Question() {}
-Question::Question(std::vector<std::string> newResponses) {
-    this->responses = newResponses;
+Question::Question(std::string newTitle, std::string newText, std::string newAuthor, long newCreated, std::vector<std::string> newResponses) 
+    : Post(newTitle, newText, newAuthor, newCreated) {
+
+        this->responses = newResponses;
 }
 
 /** Destructor */

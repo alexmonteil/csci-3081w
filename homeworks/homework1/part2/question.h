@@ -13,8 +13,8 @@ class Question : public Post {
         std::vector<std::string> responses;
 
     public:
-        Question();
-        Question(std::vector<std::string> newResponses);
+        Question(std::string newTitle, std::string newText, std::string newAuthor, long newCreated) : Post(newTitle, newText, newAuthor, newCreated) {};
+        Question(std::string newTitle, std::string newText, std::string newAuthor, long newCreated, std::vector<std::string> newResponses);
         ~Question();
         void addResponse(std::string newResponse);
         void view();
