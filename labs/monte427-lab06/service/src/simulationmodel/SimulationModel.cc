@@ -1,14 +1,13 @@
 #include "SimulationModel.h"
 
-#include "Robot.h"
 #include "Drone.h"
-#include "Package.h"
 #include "Helicopter.h"
 #include "Human.h"
+#include "Package.h"
+#include "Robot.h"
 
 SimulationModel::SimulationModel(IController& controller)
-    : controller(controller) {
-}
+    : controller(controller) {}
 
 SimulationModel::~SimulationModel() {
   // Delete dynamically allocated variables
@@ -32,10 +31,10 @@ IEntity* SimulationModel::createEntity(const JsonObject& entity) {
     myNewEntity = new Drone(entity);
   } else if (type == "robot") {
     myNewEntity = new Robot(entity);
-  } else if (type == "helicopter")  {
+  } else if (type == "helicopter") {
     myNewEntity = new Helicopter(entity);
-  } else if (type == "human") {  
-    myNewEntity = new Human(entity); 
+  } else if (type == "human") {
+    myNewEntity = new Human(entity);
   } else {
     std::cout << "[!] Error: Unsupported entity type: " << type << std::endl;
     return nullptr;
@@ -50,9 +49,7 @@ IEntity* SimulationModel::createEntity(const JsonObject& entity) {
   return myNewEntity;
 }
 
-void SimulationModel::removeEntity(int id) {
-  removed.insert(id);
-}
+void SimulationModel::removeEntity(int id) { removed.insert(id); }
 
 /// Schedules a Delivery for an object in the scene
 void SimulationModel::scheduleTrip(const JsonObject& details) {
@@ -66,7 +63,7 @@ void SimulationModel::scheduleTrip(const JsonObject& details) {
   for (auto& [id, entity] : entities) {
     if (name == entity->getName()) {
       if (Robot* r = dynamic_cast<Robot*>(entity)) {
-        if  (r->requestedDelivery) {
+        if (r->requestedDelivery) {
           receiver = r;
           break;
         }
@@ -79,7 +76,7 @@ void SimulationModel::scheduleTrip(const JsonObject& details) {
   for (auto& [id, entity] : entities) {
     if (name + "_package" == entity->getName()) {
       if (Package* p = dynamic_cast<Package*>(entity)) {
-        if  (p->requiresDelivery) {
+        if (p->requiresDelivery) {
           package = p;
           break;
         }
@@ -96,9 +93,7 @@ void SimulationModel::scheduleTrip(const JsonObject& details) {
   }
 }
 
-const routing::IGraph* SimulationModel::getGraph() const {
-  return graph;
-}
+const routing::IGraph* SimulationModel::getGraph() const { return graph; }
 
 void SimulationModel::setGraph(const routing::IGraph* graph) {
   if (this->graph) delete this->graph;
@@ -120,8 +115,8 @@ void SimulationModel::update(double dt) {
 void SimulationModel::removeFromSim(int id) {
   IEntity* entity = entities[id];
   if (entity) {
-    for (auto i = scheduledDeliveries.begin();
-      i != scheduledDeliveries.end(); ++i) {
+    for (auto i = scheduledDeliveries.begin(); i != scheduledDeliveries.end();
+         ++i) {
       if (*i == entity) {
         scheduledDeliveries.erase(i);
         break;

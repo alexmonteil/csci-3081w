@@ -1,14 +1,15 @@
 #ifndef SIMULATION_MODEL_H_
 #define SIMULATION_MODEL_H_
 
+#include <deque>
+#include <map>
+#include <set>
+
 #include "Drone.h"
 #include "IController.h"
 #include "IEntity.h"
 #include "Robot.h"
 #include "graph.h"
-#include <deque>
-#include <map>
-#include <set>
 
 //--------------------  Model ----------------------------
 
@@ -45,9 +46,9 @@ class SimulationModel {
 
   /**
    * @brief Removes entity with given ID from the simulation
-   * 
+   *
    * @param id of the entity to be removed
-  */
+   */
   void removeEntity(int id);
 
   /**
@@ -67,7 +68,7 @@ class SimulationModel {
    * @brief Returns the graph of the map
    *
    * @returns IGraph* graph pointer
-  */
+   */
   const routing::IGraph* getGraph() const;
 
   std::deque<Package*> scheduledDeliveries;
