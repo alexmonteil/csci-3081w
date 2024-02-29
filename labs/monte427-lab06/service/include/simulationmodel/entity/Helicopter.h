@@ -29,6 +29,7 @@ class Helicopter : public IEntity {
 
 
     private:
+        const double MIN_DISTANCE = 0.5; 
         Vector3 destination; 
         Vector3 getRandomPosition() const;       
 

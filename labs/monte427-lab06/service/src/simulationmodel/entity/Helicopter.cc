@@ -12,7 +12,7 @@ void Helicopter::update(double dt) {
     // if the difference between current position and destination is small enough
     // Then consider current position destination.
 
-    if (position.dist(destination) < 0.5) {
+    if (position.dist(destination) < MIN_DISTANCE) {
 
         // get new random position
         destination = getRandomPosition();
