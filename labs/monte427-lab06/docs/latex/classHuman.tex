@@ -1,0 +1,84 @@
+\hypertarget{classHuman}{}\doxysection{Human Class Reference}
+\label{classHuman}\index{Human@{Human}}
+
+
+Represents a human in a physical system.  
+
+
+
+
+{\ttfamily \#include $<$Human.\+h$>$}
+
+
+
+Inheritance diagram for Human\+:
+% FIG 0
+
+
+Collaboration diagram for Human\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHuman_ab9093e7585720f86abc562eeca7b0c18}{Human}} (const Json\+Object \&obj)
+\begin{DoxyCompactList}\small\item\em Parameter constructor -\/ constructs a new \mbox{\hyperlink{classHuman}{Human}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHuman_a93ca0fbf9e5b5bcb6f2f72eeb450219b}\label{classHuman_a93ca0fbf9e5b5bcb6f2f72eeb450219b}} 
+\mbox{\hyperlink{classHuman_a93ca0fbf9e5b5bcb6f2f72eeb450219b}{$\sim$\+Human}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHuman_a50fc28819a36d3b6cfdb3b219e340231}{update}} (double dt)
+\begin{DoxyCompactList}\small\item\em Updates the \mbox{\hyperlink{classHuman}{Human}}\textquotesingle{}s position within the simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHuman_ad1243f1e38f527c3c0bdf3d83299e266}\label{classHuman_ad1243f1e38f527c3c0bdf3d83299e266}} 
+\mbox{\hyperlink{classHuman_ad1243f1e38f527c3c0bdf3d83299e266}{Human}} (const \mbox{\hyperlink{classHuman}{Human}} \&human)=delete
+\begin{DoxyCompactList}\small\item\em Removes the copy constructor operator so that helicopters cannot be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classHuman_a58450c87067b517b248d5daed33c5757}\label{classHuman_a58450c87067b517b248d5daed33c5757}} 
+\mbox{\hyperlink{classHuman}{Human}} \& \mbox{\hyperlink{classHuman_a58450c87067b517b248d5daed33c5757}{operator=}} (const \mbox{\hyperlink{classHuman}{Human}} \&human)=delete
+\begin{DoxyCompactList}\small\item\em Removes the assignment operator so that helicopters cannot be copied. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a human in a physical system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHuman_ab9093e7585720f86abc562eeca7b0c18}\label{classHuman_ab9093e7585720f86abc562eeca7b0c18}} 
+\index{Human@{Human}!Human@{Human}}
+\index{Human@{Human}!Human@{Human}}
+\doxysubsubsection{\texorpdfstring{Human()}{Human()}}
+{\footnotesize\ttfamily Human\+::\+Human (\begin{DoxyParamCaption}\item[{const Json\+Object \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Parameter constructor -\/ constructs a new \mbox{\hyperlink{classHuman}{Human}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & JSON object containing the \mbox{\hyperlink{classHuman}{Human}}\textquotesingle{}s information \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHuman_a50fc28819a36d3b6cfdb3b219e340231}\label{classHuman_a50fc28819a36d3b6cfdb3b219e340231}} 
+\index{Human@{Human}!update@{update}}
+\index{update@{update}!Human@{Human}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Human\+::update (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the \mbox{\hyperlink{classHuman}{Human}}\textquotesingle{}s position within the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_a9aac6c7fa7d3d721f2ea69b116d39d5b}{IEntity}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/photonix/git/csci-\/3081w-\/program-\/design/monte427-\/lab06/service/include/simulationmodel/entity/Human.\+h\end{DoxyCompactItemize}

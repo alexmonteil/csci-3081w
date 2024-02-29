@@ -10,26 +10,43 @@
  */
 class Helicopter : public IEntity {
     public:
-        Helicopter(const JsonObject& obj);
-        ~Helicopter();
-        void update(double dt);
-        Vector3 getDestination() const;
 
         /**
-         * @brief Removing the copy constructor operator
+         * @brief Parameter constructor - constructs a new Helicopter object
+         * 
+         * @param obj JSON object containing the Helicopters's information
+         */
+        Helicopter(const JsonObject& obj);
+
+        /**
+         * @brief Destructor
+         * 
+         */
+        ~Helicopter();
+
+        /**
+         * @brief Updates the Helicopter's position within the simulation
+         * 
+         * @param dt Delta time
+         */
+        void update(double dt);
+
+
+        /**
+         * @brief Removes the copy constructor operator
          * so that helicopters cannot be copied.
          */
         Helicopter(const Helicopter& helicopter) = delete;
 
         /**
-         * @brief Removing the assignment operator
+         * @brief Removes the assignment operator
          * so that helicopters cannot be copied.
          */
         Helicopter& operator=(const Helicopter& helicopter) = delete;
 
 
     private:
-        const double MIN_DISTANCE = 0.5; 
+        const double MIN_DISTANCE = 0.1;
         Vector3 destination; 
         Vector3 getRandomPosition() const;       
 

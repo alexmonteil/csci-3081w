@@ -1,0 +1,63 @@
+\hypertarget{classJsonSession}{}\doxysection{Json\+Session Class Reference}
+\label{classJsonSession}\index{JsonSession@{JsonSession}}
+
+
+Inheritance diagram for Json\+Session\+:
+% FIG 0
+
+
+Collaboration diagram for Json\+Session\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classJsonSession_a47b29526ba6c6138bfcef411f8d11b01}{receive\+JSON}} (picojson\+::value \&val)
+\begin{DoxyCompactList}\small\item\em Receive a command from the web server. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classJsonSession_ad14ac95cfca415460db03218beb9f717}{receive\+Command}} (const std\+::string \&cmd, const Json\+Object \&data, Json\+Object \&return\+Value)=0
+\begin{DoxyCompactList}\small\item\em Handles specific commands from the web server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJsonSession_ad14ac95cfca415460db03218beb9f717}\label{classJsonSession_ad14ac95cfca415460db03218beb9f717}} 
+\index{JsonSession@{JsonSession}!receiveCommand@{receiveCommand}}
+\index{receiveCommand@{receiveCommand}!JsonSession@{JsonSession}}
+\doxysubsubsection{\texorpdfstring{receiveCommand()}{receiveCommand()}}
+{\footnotesize\ttfamily virtual void Json\+Session\+::receive\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cmd,  }\item[{const Json\+Object \&}]{data,  }\item[{Json\+Object \&}]{return\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Handles specific commands from the web server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & command \\
+\hline
+{\em data} & data (JSON) \\
+\hline
+{\em return\+Value} & return value (JSON) which will be sent back to the server \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJsonSession_a47b29526ba6c6138bfcef411f8d11b01}\label{classJsonSession_a47b29526ba6c6138bfcef411f8d11b01}} 
+\index{JsonSession@{JsonSession}!receiveJSON@{receiveJSON}}
+\index{receiveJSON@{receiveJSON}!JsonSession@{JsonSession}}
+\doxysubsubsection{\texorpdfstring{receiveJSON()}{receiveJSON()}}
+{\footnotesize\ttfamily void Json\+Session\+::receive\+JSON (\begin{DoxyParamCaption}\item[{picojson\+::value \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Receive a command from the web server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & the command (in JSON format) \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classJSONSession}{JSONSession}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/photonix/git/csci-\/3081w-\/program-\/design/monte427-\/lab06/service/include/simulationmodel/Web\+Server.\+h\end{DoxyCompactItemize}

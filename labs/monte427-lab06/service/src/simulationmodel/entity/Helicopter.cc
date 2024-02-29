@@ -33,7 +33,3 @@ Vector3 Helicopter::getRandomPosition() const {
            position.y,
            ((static_cast<double>(rand())) / RAND_MAX) * (1600) - 800};
 }
-
-Vector3 Helicopter::getDestination() const {
-   return destination; 
-}

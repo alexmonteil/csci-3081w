@@ -1,0 +1,56 @@
+\hypertarget{classWebServerBase}{}\doxysection{Web\+Server\+Base Class Reference}
+\label{classWebServerBase}\index{WebServerBase@{WebServerBase}}
+
+
+{\ttfamily \#include $<$Web\+Server.\+h$>$}
+
+
+
+Inheritance diagram for Web\+Server\+Base\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classWebServerBase_1_1Session}{Session}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWebServerBase_a6eb42d2b86335dea4836a4f5b7b13068}\label{classWebServerBase_a6eb42d2b86335dea4836a4f5b7b13068}} 
+{\bfseries Web\+Server\+Base} (int port=8081, const std\+::string \&web\+Dir=\char`\"{}.\char`\"{})
+\item 
+\mbox{\Hypertarget{classWebServerBase_ad27bd634d494ea911c7008139f0b3666}\label{classWebServerBase_ad27bd634d494ea911c7008139f0b3666}} 
+void {\bfseries service} (int time=10)
+\item 
+\mbox{\Hypertarget{classWebServerBase_a76e84a0ea8e163a4f24be156c1f8d41a}\label{classWebServerBase_a76e84a0ea8e163a4f24be156c1f8d41a}} 
+virtual void {\bfseries create\+Session} (void $\ast$info)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWebServerBase_a022c82761a0ac4dd39467376334ff86b}\label{classWebServerBase_a022c82761a0ac4dd39467376334ff86b}} 
+lws\+\_\+context $\ast$ {\bfseries context}
+\item 
+\mbox{\Hypertarget{classWebServerBase_abf96fb8ba8d78013c3dd616106817cba}\label{classWebServerBase_abf96fb8ba8d78013c3dd616106817cba}} 
+std\+::vector$<$ \mbox{\hyperlink{classWebServerBase_1_1Session}{Session}} $\ast$ $>$ {\bfseries sessions}
+\item 
+\mbox{\Hypertarget{classWebServerBase_a7ff59e1d3d1cf858605b1202bde81132}\label{classWebServerBase_a7ff59e1d3d1cf858605b1202bde81132}} 
+std\+::map$<$ int, \mbox{\hyperlink{classWebServerBase_1_1Session}{Session}} $\ast$ $>$ {\bfseries session\+Map}
+\item 
+\mbox{\Hypertarget{classWebServerBase_a7143823a6bd81f0992d9565828326d86}\label{classWebServerBase_a7143823a6bd81f0992d9565828326d86}} 
+std\+::string {\bfseries web\+Dir}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWebServerBase_adc4ad93408d31f285a3bf5ff38749a4f}\label{classWebServerBase_adc4ad93408d31f285a3bf5ff38749a4f}} 
+virtual \mbox{\hyperlink{classWebServerBase_1_1Session}{Session}} $\ast$ {\bfseries create\+Session} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Copyright (c) 2019 Dan Orban 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/photonix/git/csci-\/3081w-\/program-\/design/monte427-\/lab06/service/include/simulationmodel/Web\+Server.\+h\end{DoxyCompactItemize}

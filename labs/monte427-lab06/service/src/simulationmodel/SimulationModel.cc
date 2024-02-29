@@ -4,6 +4,7 @@
 #include "Drone.h"
 #include "Package.h"
 #include "Helicopter.h"
+#include "Human.h"
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -33,6 +34,8 @@ IEntity* SimulationModel::createEntity(const JsonObject& entity) {
     myNewEntity = new Robot(entity);
   } else if (type == "helicopter")  {
     myNewEntity = new Helicopter(entity);
+  } else if (type == "human") {  
+    myNewEntity = new Human(entity); 
   } else {
     std::cout << "[!] Error: Unsupported entity type: " << type << std::endl;
     return nullptr;

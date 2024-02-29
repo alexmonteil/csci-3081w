@@ -19,7 +19,7 @@ class Package;
 class Drone : public IEntity {
  public:
   /**
-   * @brief Drones are created with a name
+   * @brief Parameter constructor - constructs a new Drone object
    * @param obj JSON object containing the drone's information
    */
   Drone(const JsonObject& obj);
@@ -28,7 +28,6 @@ class Drone : public IEntity {
    * @brief Destructor
    */
   ~Drone();
-
 
   /**
    * @brief Gets the next delivery in the scheduler
@@ -42,13 +41,13 @@ class Drone : public IEntity {
   void update(double dt);
 
   /**
-   * @brief Removing the copy constructor operator
+   * @brief Removes the copy constructor operator
    * so that drones cannot be copied.
    */
   Drone(const Drone& drone) = delete;
 
   /**
-   * @brief Removing the assignment operator
+   * @brief Removes the assignment operator
    * so that drones cannot be copied.
    */
   Drone& operator=(const Drone& drone) = delete;
