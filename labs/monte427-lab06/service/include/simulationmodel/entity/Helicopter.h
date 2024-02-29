@@ -29,7 +29,8 @@ class Helicopter : public IEntity {
 
 
     private:
-        Vector3 destination;        
+        Vector3 destination; 
+        Vector3 getRandomPosition() const;       
 
 };
 
