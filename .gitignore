@@ -33,5 +33,6 @@
 
 entity_app
 memory_app
+ip_app
 .vscode
 sandbox
